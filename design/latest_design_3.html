@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Database Metadata Marker View</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=JetBrains+Mono:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#135bec",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#0a0e14",
+                        "neon-amber": "#ffb000",
+                        "neon-cyan": "#00f2ff",
+                        "db-orange": "#f97316",
+                        "console-border": "#1e293b",
+                        "console-surface": "#161e2b",
+                    },
+                    fontFamily: {
+                        "display": ["Space Grotesk", "sans-serif"],
+                        "mono": ["JetBrains Mono", "monospace"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0px",
+                        "lg": "0px",
+                        "xl": "0px",
+                        "full": "0.75rem"
+                    },
+                },
+            },
+        }
+    </script>
+<style type="text/tailwindcss">
+        .brutalist-border {
+            border: 2px solid #1e293b;
+        }
+        .scanline {
+            background: linear-gradient(to bottom, rgba(255,255,255,0) 50%, rgba(0,0,0,0.1) 50%);
+            background-size: 100% 4px;
+        }
+        .monospaced-ui {
+            font-family: 'JetBrains Mono', monospace;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
+        .db-accent-border {
+            border-left: 4px solid #f97316;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 selection:bg-primary/40">
+<div class="flex flex-col h-screen w-full overflow-hidden">
+<header class="flex h-14 items-center justify-between brutalist-border bg-console-surface px-4 monospaced-ui">
+<div class="flex items-center gap-6">
+<div class="flex items-center gap-3 text-primary">
+<span class="material-symbols-outlined text-2xl">terminal</span>
+<span class="font-bold text-lg tracking-tighter text-db-orange">V-CONSOLE DB_SYNC</span>
+</div>
+<nav class="hidden md:flex items-center gap-6 text-xs text-slate-400">
+<a class="hover:text-primary transition-colors" href="#">PROJECTS</a>
+<span class="text-slate-700">|</span>
+<a class="text-db-orange border-b border-db-orange" href="#">REVIEW_SLUG</a>
+<span class="text-slate-700">|</span>
+<a class="hover:text-primary transition-colors" href="#">POCKETBASE_INST</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<div class="flex items-center gap-2 bg-db-orange/10 px-3 py-1 border border-db-orange/40">
+<div class="w-2 h-2 rounded-full bg-db-orange animate-pulse"></div>
+<span class="text-[10px] text-db-orange">DATABASE PERSISTENCE ACTIVE</span>
+</div>
+<div class="flex gap-1">
+<button class="brutalist-border bg-slate-800 p-1.5 hover:bg-primary transition-all">
+<span class="material-symbols-outlined text-sm">database</span>
+</button>
+<button class="brutalist-border bg-primary px-4 py-1.5 text-xs font-bold hover:brightness-110">
+                    SYNC_REPOSITORY
+                </button>
+</div>
+</div>
+</header>
+<main class="flex flex-1 overflow-hidden">
+<section class="flex-1 flex flex-col brutalist-border overflow-hidden bg-black/20 relative">
+<div class="relative flex-1 bg-black flex items-center justify-center group">
+<div class="absolute inset-0 scanline opacity-10 pointer-events-none"></div>
+<div class="w-full h-full bg-center bg-no-repeat bg-contain" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCOERSdz_Ls3q2QB__wVyu7vzmNCDvDzxstbcw14wWZ3rzcuR-HvApfvgGq3N4G-ngg-YeF-1fUl_BxJmkaUi0ylyhte1Y6mmwPc1dSDXaTb0BfW8rvwrILKPC2z_MR2xQKluxQE5Fqzz01EZf46JinnrGiSSqxexsKR4cZa0FUIc0BxNJfHI6PWLvUKyL67N6umhKRcozSHpqJ109d5XLJx8p0kMuK1a3qX2EV87-FlWY8P5oc85I8jxv6_1Rqlu7IyHWiW2fHA2A');"></div>
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 bg-console-surface brutalist-border border-db-orange shadow-[0_0_30px_rgba(249,115,22,0.2)] z-30 monospaced-ui">
+<div class="p-3 bg-db-orange/10 border-b border-db-orange/40 flex justify-between items-center">
+<span class="text-[11px] font-bold text-db-orange flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">cloud_done</span>
+                            MARKER_METADATA
+                        </span>
+<button class="material-symbols-outlined text-slate-500 hover:text-white text-sm">close</button>
+</div>
+<div class="p-4 space-y-3">
+<div class="space-y-1">
+<label class="text-[9px] text-slate-500">CREATED_BY</label>
+<div class="bg-black/40 p-2 border border-slate-700 text-[11px] text-slate-200">
+                                USER_ID: PKB_9921_ADMIN
+                            </div>
+</div>
+<div class="space-y-1">
+<label class="text-[9px] text-slate-500">TIMESTAMP_UTC</label>
+<div class="bg-black/40 p-2 border border-slate-700 text-[11px] text-slate-200">
+                                2023-11-24T14:42:11.002Z
+                            </div>
+</div>
+<div class="space-y-1">
+<label class="text-[9px] text-slate-500">COMMIT_HASH</label>
+<div class="bg-black/40 p-2 border border-slate-700 text-[11px] text-neon-cyan overflow-hidden text-ellipsis">
+                                4f8e2a1b9c3d0e7f6a5b4c3d2e1f0a9b8c7d6e5
+                            </div>
+</div>
+<div class="flex gap-2 pt-2">
+<button class="flex-1 py-2 bg-db-orange text-black font-bold text-[10px] hover:brightness-110">REVERT_STATE</button>
+<button class="flex-1 py-2 bg-slate-800 text-slate-300 text-[10px] brutalist-border">LOG_HISTORY</button>
+</div>
+</div>
+</div>
+<div class="absolute top-4 left-4 flex flex-col gap-1 monospaced-ui text-[10px]">
+<div class="bg-black/60 px-2 py-0.5 border-l-2 border-db-orange text-db-orange">SYNC_ACTIVE: SESSION_004</div>
+<div class="bg-black/60 px-2 py-0.5 border-l-2 border-neon-cyan text-neon-cyan">DB: POCKETBASE_LIVE</div>
+</div>
+<div class="absolute top-4 right-4 monospaced-ui text-right">
+<div class="text-2xl font-bold text-white tabular-nums tracking-widest bg-black/60 px-4 py-1">00:12:45:12</div>
+<div class="text-[10px] text-slate-400 bg-black/60 px-2 uppercase">Marker_ID: 881-XQ</div>
+</div>
+</div>
+<div class="h-64 bg-console-surface brutalist-border flex flex-col monospaced-ui">
+<div class="flex items-center justify-between px-4 py-2 border-b border-console-border bg-slate-900/50">
+<div class="flex gap-4">
+<button class="text-db-orange flex items-center gap-1 text-[10px]"><span class="material-symbols-outlined text-xs">database</span> COMMIT_MARKER (M)</button>
+<button class="text-slate-500 flex items-center gap-1 text-[10px]"><span class="material-symbols-outlined text-xs">history</span> SYNC_LOG</button>
+</div>
+<div class="flex gap-4 items-center">
+<span class="text-[10px] text-slate-500">DB_LATENCY: 12MS</span>
+<div class="w-32 h-1 bg-slate-800"><div class="w-4/5 h-full bg-db-orange"></div></div>
+</div>
+</div>
+<div class="flex-1 relative overflow-hidden bg-[#0d121b]">
+<div class="p-2 space-y-1">
+<div class="h-10 brutalist-border bg-primary/10 relative flex items-center px-2">
+<span class="text-[9px] text-primary/60 font-bold absolute left-2 top-1">V1</span>
+<div class="h-full w-48 bg-primary/40 brutalist-border mx-2 flex items-center px-2">
+<span class="text-[9px] truncate">SCENE_04_A.MOV</span>
+</div>
+<div class="h-full w-72 bg-primary/60 brutalist-border flex items-center px-2 relative border border-db-orange">
+<span class="text-[9px] truncate">SCENE_04_B_VFX.MOV</span>
+<div class="absolute left-1/2 top-0 bottom-0 w-1 bg-db-orange shadow-[0_0_12px_#f97316]">
+<div class="absolute top-[-8px] left-[-4px] w-3 h-3 bg-db-orange rotate-45 border border-white/20"></div>
+</div>
+</div>
+</div>
+<div class="h-8 brutalist-border bg-neon-cyan/5 relative flex items-center">
+<span class="text-[9px] text-neon-cyan/60 font-bold absolute left-2">A1</span>
+<div class="w-full h-full px-20 flex items-center"><div class="h-1 w-full bg-neon-cyan/20"></div></div>
+</div>
+</div>
+<div class="absolute top-0 bottom-0 left-[45%] w-[2px] bg-red-500 z-10 shadow-[0_0_12px_rgba(239,68,68,0.5)]">
+<div class="absolute top-0 left-[-6px] w-0 h-0 border-l-[6px] border-l-transparent border-r-[6px] border-r-transparent border-t-[8px] border-t-red-500"></div>
+</div>
+</div>
+<div class="bg-slate-900 border-t border-console-border p-3 flex items-center justify-between">
+<div class="flex items-center gap-6">
+<div class="flex items-center gap-3">
+<button class="material-symbols-outlined text-slate-400">skip_previous</button>
+<button class="material-symbols-outlined text-white text-3xl">play_circle</button>
+<button class="material-symbols-outlined text-slate-400">skip_next</button>
+</div>
+<div class="h-6 w-[1px] bg-slate-800"></div>
+<span class="text-[10px] text-db-orange font-bold">DATABASE PUSH ENABLED</span>
+</div>
+<div class="flex items-center gap-4 text-[10px] text-slate-500">
+<span class="material-symbols-outlined text-sm">storage</span>
+<span>4.2GB PERSISTED</span>
+</div>
+</div>
+</div>
+</section>
+<aside class="w-96 brutalist-border bg-console-surface flex flex-col monospaced-ui overflow-hidden">
+<div class="p-4 border-b border-console-border flex justify-between items-center bg-slate-900">
+<h3 class="text-sm font-bold tracking-widest text-db-orange flex items-center gap-2">
+<span class="material-symbols-outlined text-base">cloud_sync</span>
+                    SYNCED_FEEDBACK.LOG
+                </h3>
+<span class="text-[10px] text-slate-500">REMOTE: 12</span>
+</div>
+<div class="p-4 bg-black/40 border-b-2 border-db-orange">
+<div class="flex flex-col gap-2">
+<div class="flex justify-between text-[10px]">
+<span class="text-db-orange font-bold">SYNC_MARKER AT 00:12:45:12</span>
+<span class="text-slate-500">POCKETBASE_PUSH</span>
+</div>
+<textarea class="bg-transparent brutalist-border border-slate-700 w-full text-xs p-2 focus:border-db-orange focus:ring-0 placeholder:text-slate-700 text-slate-100" placeholder="WRITE PERSISTENT FEEDBACK..." rows="2"></textarea>
+<div class="flex justify-end gap-2">
+<button class="px-3 py-1 bg-db-orange text-black text-[10px] font-bold">COMMIT_TO_DB</button>
+</div>
+</div>
+</div>
+<div class="flex-1 overflow-y-auto scrollbar-hide p-2 space-y-2">
+<div class="group brutalist-border bg-slate-800/50 p-3 hover:bg-slate-800 cursor-pointer transition-colors border-l-4 border-l-db-orange">
+<div class="flex justify-between items-start mb-2">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[14px] text-db-orange">cloud_done</span>
+<span class="text-[11px] font-bold text-db-orange">00:12:45:12</span>
+</div>
+<span class="text-[8px] bg-db-orange/20 text-db-orange px-1 rounded">SYNCED</span>
+</div>
+<p class="text-[11px] text-slate-300 leading-relaxed uppercase">Update metadata for this frame. Marker synchronized with PocketBase repository.</p>
+</div>
+<div class="group brutalist-border bg-slate-800/50 p-3 hover:bg-slate-800 cursor-pointer transition-colors border-l-4 border-l-neon-cyan">
+<div class="flex justify-between items-start mb-2">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[14px] text-neon-cyan">cloud_done</span>
+<span class="text-[11px] font-bold text-neon-cyan">00:08:12:04</span>
+</div>
+<span class="text-[8px] bg-slate-700 text-slate-400 px-1 rounded">SYNCED</span>
+</div>
+<p class="text-[11px] text-slate-300 leading-relaxed uppercase">The saturation on the neon signs needs adjustment to match reference.</p>
+</div>
+<div class="group brutalist-border bg-slate-800/20 p-3 opacity-50 border-l-4 border-l-slate-700">
+<div class="flex justify-between items-start mb-2">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[14px] text-slate-600">cloud_done</span>
+<span class="text-[11px] font-bold text-slate-500">00:04:22:18</span>
+</div>
+<span class="text-[8px] text-slate-600 px-1">DB_ARCHIVED</span>
+</div>
+<p class="text-[11px] text-slate-500 leading-relaxed uppercase line-through">Remove the boom mic visible in top right quadrant.</p>
+</div>
+</div>
+<div class="p-4 bg-slate-900 border-t border-console-border grid grid-cols-2 gap-2 text-[9px]">
+<div class="flex flex-col">
+<span class="text-slate-500 uppercase">DB_Endpoint</span>
+<span class="text-db-orange">pb-console.local</span>
+</div>
+<div class="flex flex-col">
+<span class="text-slate-500 uppercase">Marker_Total</span>
+<span class="text-slate-300">142_ENTRIES</span>
+</div>
+<div class="flex flex-col">
+<span class="text-slate-500 uppercase">Last_Push</span>
+<span class="text-neon-cyan">0.4s AGO</span>
+</div>
+<div class="flex flex-col">
+<span class="text-slate-500 uppercase">Commit_Hash</span>
+<span class="text-slate-300">#4F8E2A</span>
+</div>
+</div>
+</aside>
+</main>
+</div>
+
+</body></html>

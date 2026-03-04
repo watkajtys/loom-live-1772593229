@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Log Initialization Fetch View - V-CONSOLE</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=IBM+Plex+Mono:wght@400;700&amp;family=JetBrains+Mono:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#135bec",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#0a0e14",
+                        "neon-amber": "#ffb000",
+                        "neon-cyan": "#00f2ff",
+                        "console-border": "#1e293b",
+                        "console-surface": "#161e2b",
+                    },
+                    fontFamily: {
+                        "ui": ["Inter", "sans-serif"],
+                        "mono": ["IBM Plex Mono", "monospace"],
+                        "jetbrains": ["JetBrains Mono", "monospace"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0px",
+                        "lg": "0px",
+                        "xl": "0px",
+                        "full": "0.75rem"
+                    },
+                },
+            },
+        }
+    </script>
+<style type="text/tailwindcss">
+        .brutalist-border {
+            border: 2px solid #1e293b;
+        }
+        .scanline {
+            background: linear-gradient(to bottom, rgba(255,255,255,0) 50%, rgba(0,0,0,0.1) 50%);
+            background-size: 100% 4px;
+        }
+        .monospaced-ui {
+            font-family: 'JetBrains Mono', monospace;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
+        .punch-card-skeleton {
+            background: repeating-linear-gradient(
+                90deg,
+                #1e293b 0px,
+                #1e293b 40px,
+                transparent 40px,
+                transparent 50px
+            );
+            height: 12px;
+            opacity: 0.3;
+        }
+        @keyframes scan-shimmer {
+            0% { transform: translateY(-100%); }
+            100% { transform: translateY(1000%); }
+        }
+        .scanner-beam {
+            height: 2px;
+            background: #00f2ff;
+            box-shadow: 0 0 15px #00f2ff;
+            position: absolute;
+            width: 100%;
+            z-index: 10;
+            animation: scan-shimmer 4s linear infinite;
+        }
+    </style>
+</head>
+<body class="bg-background-dark font-ui text-slate-100 selection:bg-primary/40 overflow-hidden">
+<div class="flex flex-col h-screen w-full">
+<header class="flex h-14 items-center justify-between brutalist-border bg-console-surface px-4 monospaced-ui shrink-0">
+<div class="flex items-center gap-6">
+<div class="flex items-center gap-3 text-primary">
+<span class="material-symbols-outlined text-2xl">terminal</span>
+<span class="font-bold text-lg tracking-tighter">V-CONSOLE v1.0.42</span>
+</div>
+<nav class="hidden md:flex items-center gap-6 text-xs text-slate-400">
+<a class="hover:text-primary transition-colors" href="#">PROJECTS</a>
+<span class="text-slate-700">|</span>
+<a class="text-primary border-b border-primary" href="#">REVIEW_SLUG</a>
+<span class="text-slate-700">|</span>
+<a class="hover:text-primary transition-colors" href="#">ASSETS</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<div class="flex items-center gap-2 bg-black/40 px-3 py-1 brutalist-border border-neon-amber">
+<div class="w-2 h-2 rounded-full bg-neon-amber animate-pulse"></div>
+<span class="text-[10px] text-neon-amber">RECOVERY_IN_PROGRESS</span>
+</div>
+<div class="flex gap-1">
+<button class="brutalist-border bg-slate-800 p-1.5 opacity-50"><span class="material-symbols-outlined text-sm">settings</span></button>
+<button class="brutalist-border bg-primary px-4 py-1.5 text-xs font-bold opacity-50">SHARE_CONSOLE</button>
+</div>
+</div>
+</header>
+<main class="flex flex-1 overflow-hidden">
+<section class="flex-1 flex flex-col brutalist-border bg-black/40 relative overflow-hidden">
+<div class="absolute inset-0 flex items-center justify-center">
+<div class="text-center space-y-4">
+<div class="w-64 h-1 bg-slate-800 relative overflow-hidden">
+<div class="absolute inset-y-0 left-0 bg-primary w-1/3 animate-[pulse_2s_infinite]"></div>
+</div>
+<div class="font-jetbrains text-[10px] text-slate-500 tracking-[0.2em]">INITIALIZING_VIDEO_BUFFER</div>
+</div>
+</div>
+<div class="mt-auto h-64 bg-console-surface border-t-2 border-console-border p-4 space-y-4 opacity-30">
+<div class="h-4 w-48 bg-slate-800"></div>
+<div class="space-y-2">
+<div class="h-12 w-full bg-slate-800/50 brutalist-border"></div>
+<div class="h-10 w-full bg-slate-800/30 brutalist-border"></div>
+<div class="h-10 w-full bg-slate-800/30 brutalist-border"></div>
+</div>
+</div>
+</section>
+<aside class="w-96 brutalist-border bg-console-surface flex flex-col overflow-hidden relative">
+<div class="scanner-beam"></div>
+<div class="p-4 border-b border-console-border flex justify-between items-center bg-slate-900 shrink-0">
+<h3 class="text-sm font-bold tracking-widest text-primary font-jetbrains uppercase">FEEDBACK_LOG.FETCH</h3>
+<span class="text-[10px] text-neon-cyan font-mono">STATUS: SYNCING</span>
+</div>
+<div class="flex-1 overflow-hidden p-4 space-y-6 relative bg-[#0d121b]">
+<div class="p-4 border border-slate-700/50 space-y-3 relative">
+<div class="flex justify-between">
+<div class="h-3 w-20 bg-slate-700/40"></div>
+<div class="h-3 w-12 bg-slate-700/40"></div>
+</div>
+<div class="punch-card-skeleton"></div>
+<div class="punch-card-skeleton w-4/5"></div>
+</div>
+<div class="p-4 border border-slate-700/50 space-y-3 relative">
+<div class="flex justify-between">
+<div class="h-3 w-24 bg-slate-700/40"></div>
+<div class="h-3 w-16 bg-slate-700/40"></div>
+</div>
+<div class="punch-card-skeleton"></div>
+<div class="punch-card-skeleton w-2/3"></div>
+</div>
+<div class="p-4 border border-slate-700/50 space-y-3 relative">
+<div class="flex justify-between">
+<div class="h-3 w-16 bg-slate-700/40"></div>
+<div class="h-3 w-20 bg-slate-700/40"></div>
+</div>
+<div class="punch-card-skeleton"></div>
+<div class="punch-card-skeleton w-full"></div>
+</div>
+<div class="p-4 border border-slate-700/50 space-y-3 relative">
+<div class="flex justify-between">
+<div class="h-3 w-28 bg-slate-700/40"></div>
+<div class="h-3 w-12 bg-slate-700/40"></div>
+</div>
+<div class="punch-card-skeleton"></div>
+<div class="punch-card-skeleton w-3/4"></div>
+</div>
+</div>
+<div class="p-4 bg-black border-t-2 border-primary/50 h-48 font-mono text-[10px] overflow-hidden flex flex-col justify-end gap-1">
+<div class="text-slate-600">CONNECTING TO DATABASE_CLUSTER_ALPHA...</div>
+<div class="text-slate-600">AUTH_TOKEN_VALIDATED: AES-256-GCM</div>
+<div class="text-neon-cyan">FETCHING ENTRIES FOR SLUG: REVIEW_SLUG_04... 200 OK</div>
+<div class="text-slate-400">RECEIVING BYTES: [####################] 100%</div>
+<div class="text-slate-400">PARSING_JSON_SCHEMA_V3...</div>
+<div class="text-neon-amber animate-pulse">RECONSTRUCTING_DOM_STATE...</div>
+<div class="mt-2 flex items-center gap-2">
+<span class="bg-primary text-white px-1">SYSTEM</span>
+<span class="text-primary">_ INITIALIZING CURSOR</span>
+</div>
+</div>
+<div class="p-4 bg-slate-900 border-t border-console-border grid grid-cols-2 gap-2 text-[9px] font-jetbrains shrink-0">
+<div class="flex flex-col">
+<span class="text-slate-500 uppercase">Latency</span>
+<span class="text-neon-cyan">14ms</span>
+</div>
+<div class="flex flex-col">
+<span class="text-slate-500 uppercase">Region</span>
+<span class="text-slate-300">US-EAST-1</span>
+</div>
+</div>
+</aside>
+</main>
+</div>
+
+</body></html>
