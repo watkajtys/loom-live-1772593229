@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>CORE: Database Connection Error - V-CONSOLE</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=JetBrains+Mono:wght@400;700&amp;family=IBM+Plex+Mono:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#135bec",
+                        "error-red": "#ff4400",
+                        "warning-orange": "#ffb000",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#0a0e14",
+                        "neon-amber": "#ffb000",
+                        "neon-cyan": "#00f2ff",
+                        "console-border": "#1e293b",
+                        "console-surface": "#161e2b",
+                        "obsidian-slate": "#0d121b",
+                    },
+                    fontFamily: {
+                        "display": ["Space Grotesk", "sans-serif"],
+                        "mono": ["JetBrains Mono", "monospace"],
+                        "ibm": ["IBM Plex Mono", "monospace"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0px",
+                        "lg": "0px",
+                        "xl": "0px",
+                        "full": "0.75rem"
+                    },
+                },
+            },
+        }
+    </script>
+<style type="text/tailwindcss">
+        .brutalist-border {
+            border: 2px solid #1e293b;
+        }
+        .scanline {
+            background: linear-gradient(to bottom, rgba(255,255,255,0) 50%, rgba(0,0,0,0.1) 50%);
+            background-size: 100% 4px;
+        }
+        .monospaced-ui {
+            font-family: 'JetBrains Mono', monospace;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
+        .rugged-shadow {
+            box-shadow: 4px 4px 0px #1e293b;
+        }
+        .rugged-shadow-error {
+            box-shadow: 4px 4px 0px #ff4400;
+        }
+        .rugged-shadow-error:active {
+            transform: translate(2px, 2px);
+            box-shadow: 2px 2px 0px #ff4400;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 selection:bg-primary/40">
+<div class="flex flex-col h-screen w-full overflow-hidden">
+<header class="flex h-14 items-center justify-between brutalist-border bg-console-surface px-4 monospaced-ui">
+<div class="flex items-center gap-6">
+<div class="flex items-center gap-3 text-primary">
+<span class="material-symbols-outlined text-2xl">terminal</span>
+<span class="font-bold text-lg tracking-tighter">V-CONSOLE v1.0.42</span>
+</div>
+<nav class="hidden md:flex items-center gap-6 text-xs text-slate-400">
+<a class="hover:text-primary transition-colors" href="#">PROJECTS</a>
+<span class="text-slate-700">|</span>
+<a class="text-primary border-b border-primary" href="#">REVIEW_SLUG</a>
+<span class="text-slate-700">|</span>
+<a class="hover:text-primary transition-colors" href="#">ASSETS</a>
+<span class="text-slate-700">|</span>
+<a class="hover:text-primary transition-colors" href="#">EXPORT_LOG</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<div class="flex items-center gap-2 bg-error-red/10 px-3 py-1 brutalist-border border-error-red/40">
+<div class="w-2 h-2 rounded-full bg-error-red animate-pulse"></div>
+<span class="text-[10px] text-error-red font-bold">ERROR_STATE</span>
+</div>
+<div class="flex gap-1">
+<button class="brutalist-border bg-slate-800 p-1.5 hover:bg-primary transition-all">
+<span class="material-symbols-outlined text-sm">settings</span>
+</button>
+<button class="brutalist-border bg-slate-800 p-1.5 hover:bg-primary transition-all">
+<span class="material-symbols-outlined text-sm text-error-red">report</span>
+</button>
+<button class="brutalist-border bg-primary px-4 py-1.5 text-xs font-bold hover:brightness-110">
+                        SHARE_CONSOLE
+                    </button>
+</div>
+</div>
+</header>
+<main class="flex flex-1 overflow-hidden">
+<section class="flex-1 flex flex-col brutalist-border overflow-hidden bg-black/20">
+<div class="relative flex-1 bg-black flex items-center justify-center group">
+<div class="absolute inset-0 scanline opacity-10 pointer-events-none"></div>
+<div class="w-full h-full bg-center bg-no-repeat bg-contain opacity-30 grayscale contrast-125" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCOERSdz_Ls3q2QB__wVyu7vzmNCDvDzxstbcw14wWZ3rzcuR-HvApfvgGq3N4G-ngg-YeF-1fUl_BxJmkaUi0ylyhte1Y6mmwPc1dSDXaTb0BfW8rvwrILKPC2z_MR2xQKluxQE5Fqzz01EZf46JinnrGiSSqxexsKR4cZa0FUIc0BxNJfHI6PWLvUKyL67N6umhKRcozSHpqJ109d5XLJx8p0kMuK1a3qX2EV87-FlWY8P5oc85I8jxv6_1Rqlu7IyHWiW2fHA2A');"></div>
+<div class="absolute inset-0 bg-error-red/5 pointer-events-none"></div>
+<div class="absolute top-4 left-4 flex flex-col gap-1 monospaced-ui text-[10px]">
+<div class="bg-black/60 px-2 py-0.5 border-l-2 border-slate-600 text-slate-400">CAM_01 / 4K / 23.976 FPS</div>
+<div class="bg-black/60 px-2 py-0.5 border-l-2 border-slate-600 text-slate-400 text-error-red">SIGNAL_SYNC_LOST</div>
+</div>
+<div class="absolute top-4 right-4 monospaced-ui text-right">
+<div class="text-2xl font-bold text-error-red tabular-nums tracking-widest bg-black/60 px-4 py-1 border-r-4 border-error-red">00:00:00:00</div>
+<div class="text-[10px] text-error-red bg-black/60 px-2">DROPPED_FRAMES_DETECTED</div>
+</div>
+<div class="z-10 bg-black/90 brutalist-border border-error-red/50 p-6 flex flex-col items-center gap-4">
+<span class="material-symbols-outlined text-5xl text-error-red">cloud_off</span>
+<span class="monospaced-ui text-error-red text-xs font-bold">DATABASE_TIMEOUT</span>
+</div>
+</div>
+<div class="h-64 bg-console-surface brutalist-border flex flex-col monospaced-ui">
+<div class="flex items-center justify-between px-4 py-2 border-b border-console-border bg-slate-900/50">
+<div class="flex gap-4">
+<button class="text-slate-700 flex items-center gap-1 text-[10px] cursor-not-allowed opacity-50"><span class="material-symbols-outlined text-xs">add_circle</span> ADD_MARKER (M)</button>
+</div>
+<div class="flex gap-4 items-center">
+<span class="text-[10px] text-error-red">STATUS: READ_ONLY_CACHE</span>
+</div>
+</div>
+<div class="flex-1 relative overflow-hidden bg-obsidian-slate">
+<div class="absolute inset-0 grid grid-cols-12 opacity-5 pointer-events-none">
+<div class="border-r border-slate-400"></div>
+<div class="border-r border-slate-400"></div>
+<div class="border-r border-slate-400"></div>
+<div class="border-r border-slate-400"></div>
+<div class="border-r border-slate-400"></div>
+<div class="border-r border-slate-400"></div>
+<div class="border-r border-slate-400"></div>
+<div class="border-r border-slate-400"></div>
+<div class="border-r border-slate-400"></div>
+<div class="border-r border-slate-400"></div>
+<div class="border-r border-slate-400"></div>
+</div>
+<div class="p-2 space-y-1 opacity-20">
+<div class="h-10 border border-dashed border-slate-800 relative flex items-center px-2"></div>
+<div class="h-8 border border-dashed border-slate-800 relative flex items-center"></div>
+</div>
+<div class="absolute inset-0 flex items-center justify-center">
+<span class="text-[10px] text-slate-700 bg-black/40 px-2 py-1">TIMELINE_SYNC_SUSPENDED</span>
+</div>
+</div>
+<div class="bg-slate-900 border-t border-console-border p-3 flex items-center justify-between">
+<div class="flex items-center gap-6">
+<div class="flex items-center gap-3 opacity-30 grayscale">
+<button class="material-symbols-outlined text-slate-700">skip_previous</button>
+<button class="material-symbols-outlined text-slate-700">fast_rewind</button>
+<button class="material-symbols-outlined text-slate-600 text-3xl">play_circle</button>
+<button class="material-symbols-outlined text-slate-700">fast_forward</button>
+<button class="material-symbols-outlined text-slate-700">skip_next</button>
+</div>
+</div>
+<div class="flex items-center gap-4 text-[10px] text-error-red">
+<span>BUFFER_ERROR / LOCAL_CACHE_ONLY</span>
+</div>
+</div>
+</div>
+</section>
+<aside class="w-96 brutalist-border bg-console-surface flex flex-col overflow-hidden border-l-0">
+<div class="p-4 border-b border-console-border flex justify-between items-center bg-slate-900 monospaced-ui">
+<h3 class="text-sm font-bold tracking-widest text-error-red">SYSTEM_FAULT_LOG</h3>
+<span class="text-[10px] text-error-red bg-error-red/20 px-1 font-bold">ERR_503</span>
+</div>
+<div class="flex-1 flex flex-col items-center justify-center p-8 text-center relative bg-obsidian-slate">
+<div class="mb-12">
+<h2 class="font-ibm text-4xl font-bold text-error-red tracking-tighter drop-shadow-[0_0_10px_rgba(255,68,0,0.3)]">SYNC_INTERRUPTED</h2>
+<div class="h-1 w-full bg-error-red mt-1"></div>
+<p class="monospaced-ui text-[10px] text-warning-orange mt-2 font-bold tracking-[0.2em]">CONNECTION_LOST_TO_BACKEND</p>
+</div>
+<button class="rugged-shadow-error brutalist-border bg-error-red border-error-red px-10 py-5 flex flex-col items-center gap-2 hover:brightness-110 active:scale-95 transition-all group">
+<span class="material-symbols-outlined text-3xl text-white">sync_problem</span>
+<span class="monospaced-ui font-bold text-sm text-white">RETRY_CONNECTION</span>
+</button>
+<div class="mt-8 bg-black/60 p-4 border border-error-red/30 w-full">
+<p class="font-ibm text-[9px] text-slate-500 leading-relaxed text-left uppercase">
+<span class="text-error-red font-bold">CRITICAL:</span> HANDSHAKE_FAILED AT 192.168.1.104. POCKETBASE_API_NOT_REACHABLE. LOCAL STORAGE IS ACTIVE BUT COMMITS ARE DISABLED UNTIL SYNC IS RESTORED.
+                        </p>
+</div>
+<div class="absolute bottom-6 left-0 right-0 px-8">
+<div class="border-t border-error-red/20 pt-4">
+<p class="font-ibm text-[10px] text-slate-600 leading-relaxed uppercase italic">
+                                SESSION_ID: <span class="text-slate-400">#REVIEW_SLUG_LOCKED</span>
+</p>
+</div>
+</div>
+</div>
+<div class="p-4 bg-slate-950 border-t border-console-border grid grid-cols-2 gap-2 text-[9px] monospaced-ui">
+<div class="flex flex-col">
+<span class="text-slate-700">SYSTEM_UPTIME</span>
+<span class="text-slate-500">01:42:12</span>
+</div>
+<div class="flex flex-col">
+<span class="text-slate-700">SYNC_BUFFER</span>
+<span class="text-error-red font-bold">OVERFLOW_RISK</span>
+</div>
+<div class="flex flex-col">
+<span class="text-slate-700">DB_CONNECTION</span>
+<span class="text-error-red font-bold">POCKETBASE_OFFLINE</span>
+</div>
+<div class="flex flex-col">
+<span class="text-slate-700">LAST_HEARTBEAT</span>
+<span class="text-slate-600">420SEC_AGO</span>
+</div>
+</div>
+</aside>
+</main>
+</div>
+
+</body></html>

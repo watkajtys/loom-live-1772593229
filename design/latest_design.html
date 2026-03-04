@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>CORE: Industrial Video Console - Empty State</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=JetBrains+Mono:wght@400;700&amp;family=IBM+Plex+Mono:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "obsidian-slate": "#0f1115",
+                        "industrial-orange": "#f97316",
+                        "console-border": "#27272a",
+                        "console-surface": "#18181b",
+                        "ghost-text": "#3f3f46",
+                    },
+                    fontFamily: {
+                        "display": ["Space Grotesk", "sans-serif"],
+                        "mono": ["JetBrains Mono", "monospace"],
+                        "ibm": ["IBM Plex Mono", "monospace"]
+                    },
+                    borderRadius: {
+                        "none": "0px",
+                        "DEFAULT": "0px",
+                    },
+                },
+            },
+        }
+    </script>
+<style type="text/tailwindcss">
+        @layer base {
+            body {
+                @apply bg-obsidian-slate text-zinc-300 font-display selection:bg-industrial-orange/30;
+            }
+        }
+        .brutalist-border {
+            border: 1px solid #27272a;
+        }
+        .brutalist-border-orange {
+            border: 2px solid #f97316;
+        }
+        .scanline {
+            background: linear-gradient(to bottom, rgba(249, 115, 22, 0.03) 50%, rgba(0,0,0,0.1) 50%);
+            background-size: 100% 4px;
+        }
+        .industrial-grid {
+            background-image: radial-gradient(circle, #27272a 1px, transparent 1px);
+            background-size: 24px 24px;
+        }
+        .rugged-btn {
+            @apply relative overflow-hidden transition-all active:translate-y-0.5 active:translate-x-0.5;
+            box-shadow: 4px 4px 0px #18181b;
+        }
+        .rugged-btn:active {
+            box-shadow: 0px 0px 0px #18181b;
+        }
+        .monospaced-ui {
+            font-family: 'IBM Plex Mono', monospace;
+            text-transform: uppercase;
+            letter-spacing: 0.075em;
+        }
+    </style>
+</head>
+<body class="h-screen w-full overflow-hidden">
+<div class="flex flex-col h-screen w-full">
+<header class="flex h-12 items-center justify-between border-b border-console-border bg-console-surface px-4 monospaced-ui text-[11px]">
+<div class="flex items-center gap-6">
+<div class="flex items-center gap-2 text-industrial-orange">
+<span class="material-symbols-outlined text-lg">settings_input_component</span>
+<span class="font-bold tracking-tighter">CORE_CONSOLE_V1.5</span>
+</div>
+<nav class="hidden md:flex items-center gap-4 text-zinc-500">
+<a class="hover:text-industrial-orange transition-colors" href="#">TERMINAL</a>
+<span class="text-zinc-800">/</span>
+<a class="text-industrial-orange" href="#">REVIEW_SLUG_001</a>
+<span class="text-zinc-800">/</span>
+<a class="hover:text-industrial-orange transition-colors" href="#">ASSETS</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<div class="flex items-center gap-2 bg-black/40 px-2 py-0.5 border border-console-border">
+<div class="w-1.5 h-1.5 rounded-full bg-industrial-orange animate-pulse"></div>
+<span class="text-[9px] text-zinc-400">POCKETBASE_SYNC_LIVE</span>
+</div>
+<div class="flex gap-1">
+<button class="border border-console-border bg-zinc-900 p-1 hover:border-industrial-orange transition-colors">
+<span class="material-symbols-outlined text-sm">tune</span>
+</button>
+<button class="bg-industrial-orange text-black px-3 py-1 font-bold text-[10px] hover:brightness-110">
+                    PUSH_REMOTE
+                </button>
+</div>
+</div>
+</header>
+<main class="flex flex-1 overflow-hidden">
+<section class="flex-1 flex flex-col border-r border-console-border overflow-hidden">
+<div class="relative flex-1 bg-black flex items-center justify-center">
+<div class="absolute inset-0 scanline pointer-events-none z-10"></div>
+<div class="w-full h-full bg-center bg-no-repeat bg-contain opacity-30 grayscale contrast-125" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCOERSdz_Ls3q2QB__wVyu7vzmNCDvDzxstbcw14wWZ3rzcuR-HvApfvgGq3N4G-ngg-YeF-1fUl_BxJmkaUi0ylyhte1Y6mmwPc1dSDXaTb0BfW8rvwrILKPC2z_MR2xQKluxQE5Fqzz01EZf46JinnrGiSSqxexsKR4cZa0FUIc0BxNJfHI6PWLvUKyL67N6umhKRcozSHpqJ109d5XLJx8p0kMuK1a3qX2EV87-FlWY8P5oc85I8jxv6_1Rqlu7IyHWiW2fHA2A');">
+</div>
+<div class="absolute top-4 left-4 flex flex-col gap-1 monospaced-ui text-[10px]">
+<div class="bg-zinc-900/80 px-2 py-1 border-l-2 border-industrial-orange text-zinc-400">INPUT: SDI_01_RAW</div>
+<div class="bg-zinc-900/80 px-2 py-1 border-l-2 border-industrial-orange text-zinc-400">STATUS: NO_SIGNAL</div>
+</div>
+<div class="absolute top-4 right-4 monospaced-ui text-right">
+<div class="text-2xl font-bold text-zinc-700 tabular-nums tracking-widest bg-zinc-900/80 px-3 py-1">--:--:--:--</div>
+</div>
+<div class="z-20 flex flex-col items-center gap-4">
+<div class="w-16 h-16 border-2 border-zinc-800 flex items-center justify-center">
+<span class="material-symbols-outlined text-4xl text-zinc-800">visibility_off</span>
+</div>
+<span class="monospaced-ui text-zinc-600 text-[11px] tracking-[0.2em]">WAITING_FOR_SOURCE</span>
+</div>
+</div>
+<div class="h-48 bg-zinc-950 border-t border-console-border flex flex-col monospaced-ui relative">
+<div class="flex items-center justify-between px-4 py-1.5 border-b border-console-border bg-zinc-900/50">
+<div class="flex gap-4">
+<span class="text-zinc-600 text-[9px] flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">history</span> TIMELINE_EMPTY</span>
+</div>
+</div>
+<div class="flex-1 relative industrial-grid opacity-20"></div>
+<div class="absolute top-0 bottom-0 left-0 w-[1px] bg-industrial-orange/50 z-10">
+<div class="absolute top-0 left-[-4px] w-0 h-0 border-l-[4px] border-l-transparent border-r-[4px] border-r-transparent border-t-[6px] border-t-industrial-orange"></div>
+</div>
+<div class="bg-zinc-900 border-t border-console-border p-2 flex items-center justify-between px-6">
+<div class="flex items-center gap-6 opacity-30 grayscale">
+<button class="material-symbols-outlined text-zinc-400 text-xl">fast_rewind</button>
+<button class="material-symbols-outlined text-zinc-400 text-3xl">play_circle</button>
+<button class="material-symbols-outlined text-zinc-400 text-xl">fast_forward</button>
+</div>
+<div class="text-[9px] text-zinc-600">NULL_PTR_EXCEPTION_SUPPRESSED</div>
+</div>
+</div>
+</section>
+<aside class="w-96 bg-obsidian-slate flex flex-col overflow-hidden">
+<div class="p-3 border-b border-console-border flex justify-between items-center bg-zinc-900/30 monospaced-ui">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 bg-industrial-orange"></span>
+<h3 class="text-[11px] font-bold tracking-widest text-zinc-400">FEEDBACK_LOG.DB</h3>
+</div>
+<span class="text-[9px] text-zinc-600">OBJECTS: 0</span>
+</div>
+<div class="flex-1 flex flex-col items-center justify-center p-10 text-center relative bg-obsidian-slate">
+<div class="mb-16">
+<h2 class="font-ibm text-5xl font-bold text-zinc-800 tracking-tighter opacity-20">STATION_IDLE</h2>
+<div class="h-[2px] w-full bg-zinc-800/40 mt-2"></div>
+</div>
+<button class="rugged-btn brutalist-border-orange bg-zinc-900 px-8 py-5 flex flex-col items-center gap-3 hover:bg-zinc-800 group border-industrial-orange">
+<span class="material-symbols-outlined text-3xl text-industrial-orange group-hover:scale-110 transition-transform">add_box</span>
+<span class="monospaced-ui font-bold text-xs text-zinc-200 group-hover:text-industrial-orange">INITIALIZE_FIRST_MARKER</span>
+</button>
+<div class="absolute bottom-10 left-0 right-0 px-10">
+<div class="border-t border-zinc-800/40 pt-6">
+<div class="flex justify-center mb-3">
+<span class="material-symbols-outlined text-zinc-800 text-lg">database</span>
+</div>
+<p class="font-ibm text-[10px] text-zinc-700 leading-relaxed uppercase tracking-wider">
+                            AUTO_SYNC_ENABLED: Feedback packets are currently routed to the <span class="text-zinc-600">PocketBase</span> instance for namespace: <span class="text-industrial-orange/60 font-bold">#REVIEW_SLUG_001</span>. No local cache detected.
+                        </p>
+</div>
+</div>
+</div>
+<div class="p-4 bg-zinc-900/40 border-t border-console-border grid grid-cols-2 gap-x-4 gap-y-3 text-[9px] monospaced-ui border-l border-console-border">
+<div class="flex flex-col gap-0.5">
+<span class="text-zinc-600">SYST_UPTIME</span>
+<span class="text-zinc-400 tabular-nums">00:14:02.84</span>
+</div>
+<div class="flex flex-col gap-0.5">
+<span class="text-zinc-600">DB_ENDPOINT</span>
+<span class="text-industrial-orange/80">LIVE_POCKETBASE</span>
+</div>
+<div class="flex flex-col gap-0.5">
+<span class="text-zinc-600">LATENCY</span>
+<span class="text-zinc-400">14MS</span>
+</div>
+<div class="flex flex-col gap-0.5">
+<span class="text-zinc-600">ENCRYPTION</span>
+<span class="text-zinc-400">AES_256_GCM</span>
+</div>
+</div>
+</aside>
+</main>
+</div>
+
+</body></html>

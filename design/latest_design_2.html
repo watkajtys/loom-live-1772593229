@@ -2,9 +2,9 @@
 <html class="dark" lang="en"><head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Log Initialization Fetch View - V-CONSOLE</title>
+<title>Industrial Video Review Console - Populated Log</title>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=IBM+Plex+Mono:wght@400;700&amp;family=JetBrains+Mono:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=JetBrains+Mono:wght@400;700&amp;family=IBM+Plex+Mono:wght@400;700&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 <script id="tailwind-config">
         tailwind.config = {
@@ -13,6 +13,8 @@
                 extend: {
                     colors: {
                         "primary": "#135bec",
+                        "industrial-orange": "#ff6b00",
+                        "ghost-white": "#f8f8ff",
                         "background-light": "#f6f6f8",
                         "background-dark": "#0a0e14",
                         "neon-amber": "#ffb000",
@@ -21,9 +23,9 @@
                         "console-surface": "#161e2b",
                     },
                     fontFamily: {
-                        "ui": ["Inter", "sans-serif"],
-                        "mono": ["IBM Plex Mono", "monospace"],
-                        "jetbrains": ["JetBrains Mono", "monospace"]
+                        "display": ["Space Grotesk", "sans-serif"],
+                        "mono": ["JetBrains Mono", "monospace"],
+                        "ibm": ["IBM Plex Mono", "monospace"]
                     },
                     borderRadius: {
                         "DEFAULT": "0px",
@@ -51,138 +53,226 @@
         .scrollbar-hide::-webkit-scrollbar {
             display: none;
         }
-        .punch-card-skeleton {
-            background: repeating-linear-gradient(
-                90deg,
-                #1e293b 0px,
-                #1e293b 40px,
-                transparent 40px,
-                transparent 50px
-            );
-            height: 12px;
-            opacity: 0.3;
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
         }
-        @keyframes scan-shimmer {
-            0% { transform: translateY(-100%); }
-            100% { transform: translateY(1000%); }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            @apply bg-slate-900;
         }
-        .scanner-beam {
-            height: 2px;
-            background: #00f2ff;
-            box-shadow: 0 0 15px #00f2ff;
-            position: absolute;
-            width: 100%;
-            z-index: 10;
-            animation: scan-shimmer 4s linear infinite;
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            @apply bg-industrial-orange;
+        }
+        .rugged-shadow {
+            box-shadow: 4px 4px 0px #1e293b;
+        }
+        .marker-tick {
+            @apply absolute w-1 h-full bg-industrial-orange shadow-[0_0_8px_rgba(255,107,0,0.6)];
         }
     </style>
 </head>
-<body class="bg-background-dark font-ui text-slate-100 selection:bg-primary/40 overflow-hidden">
-<div class="flex flex-col h-screen w-full">
-<header class="flex h-14 items-center justify-between brutalist-border bg-console-surface px-4 monospaced-ui shrink-0">
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-ghost-white selection:bg-industrial-orange/40">
+<div class="flex flex-col h-screen w-full overflow-hidden">
+<header class="flex h-14 items-center justify-between brutalist-border bg-console-surface px-4 monospaced-ui">
 <div class="flex items-center gap-6">
-<div class="flex items-center gap-3 text-primary">
+<div class="flex items-center gap-3 text-industrial-orange">
 <span class="material-symbols-outlined text-2xl">terminal</span>
 <span class="font-bold text-lg tracking-tighter">V-CONSOLE v1.0.42</span>
 </div>
 <nav class="hidden md:flex items-center gap-6 text-xs text-slate-400">
-<a class="hover:text-primary transition-colors" href="#">PROJECTS</a>
+<a class="hover:text-industrial-orange transition-colors" href="#">PROJECTS</a>
 <span class="text-slate-700">|</span>
-<a class="text-primary border-b border-primary" href="#">REVIEW_SLUG</a>
+<a class="text-industrial-orange border-b border-industrial-orange" href="#">REVIEW_SLUG_PRIME</a>
 <span class="text-slate-700">|</span>
-<a class="hover:text-primary transition-colors" href="#">ASSETS</a>
+<a class="hover:text-industrial-orange transition-colors" href="#">ASSETS</a>
+<span class="text-slate-700">|</span>
+<a class="hover:text-industrial-orange transition-colors" href="#">EXPORT_LOG</a>
 </nav>
 </div>
 <div class="flex items-center gap-4">
-<div class="flex items-center gap-2 bg-black/40 px-3 py-1 brutalist-border border-neon-amber">
-<div class="w-2 h-2 rounded-full bg-neon-amber animate-pulse"></div>
-<span class="text-[10px] text-neon-amber">RECOVERY_IN_PROGRESS</span>
+<div class="flex items-center gap-2 bg-black/40 px-3 py-1 brutalist-border">
+<div class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></div>
+<span class="text-[10px] text-green-500">SESSION_ACTIVE</span>
 </div>
 <div class="flex gap-1">
-<button class="brutalist-border bg-slate-800 p-1.5 opacity-50"><span class="material-symbols-outlined text-sm">settings</span></button>
-<button class="brutalist-border bg-primary px-4 py-1.5 text-xs font-bold opacity-50">SHARE_CONSOLE</button>
+<button class="brutalist-border bg-slate-800 p-1.5 hover:bg-industrial-orange transition-all">
+<span class="material-symbols-outlined text-sm">settings</span>
+</button>
+<button class="brutalist-border bg-slate-800 p-1.5 hover:bg-industrial-orange transition-all">
+<span class="material-symbols-outlined text-sm">notifications</span>
+</button>
+<button class="brutalist-border bg-industrial-orange px-4 py-1.5 text-xs font-bold text-black hover:brightness-110">
+                    SHARE_CONSOLE
+                </button>
 </div>
 </div>
 </header>
 <main class="flex flex-1 overflow-hidden">
-<section class="flex-1 flex flex-col brutalist-border bg-black/40 relative overflow-hidden">
-<div class="absolute inset-0 flex items-center justify-center">
-<div class="text-center space-y-4">
-<div class="w-64 h-1 bg-slate-800 relative overflow-hidden">
-<div class="absolute inset-y-0 left-0 bg-primary w-1/3 animate-[pulse_2s_infinite]"></div>
+<section class="flex-1 flex flex-col brutalist-border overflow-hidden bg-black/20">
+<div class="relative flex-1 bg-black flex items-center justify-center group">
+<div class="absolute inset-0 scanline opacity-10 pointer-events-none"></div>
+<div class="w-full h-full bg-center bg-no-repeat bg-contain" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCOERSdz_Ls3q2QB__wVyu7vzmNCDvDzxstbcw14wWZ3rzcuR-HvApfvgGq3N4G-ngg-YeF-1fUl_BxJmkaUi0ylyhte1Y6mmwPc1dSDXaTb0BfW8rvwrILKPC2z_MR2xQKluxQE5Fqzz01EZf46JinnrGiSSqxexsKR4cZa0FUIc0BxNJfHI6PWLvUKyL67N6umhKRcozSHpqJ109d5XLJx8p0kMuK1a3qX2EV87-FlWY8P5oc85I8jxv6_1Rqlu7IyHWiW2fHA2A');">
 </div>
-<div class="font-jetbrains text-[10px] text-slate-500 tracking-[0.2em]">INITIALIZING_VIDEO_BUFFER</div>
+<div class="absolute top-4 left-4 flex flex-col gap-1 monospaced-ui text-[10px]">
+<div class="bg-black/80 px-2 py-0.5 border-l-2 border-industrial-orange text-ghost-white">CAM_01 / 4K / 23.976 FPS</div>
+<div class="bg-black/80 px-2 py-0.5 border-l-2 border-industrial-orange text-ghost-white">LOG-C / REC.709 LUTS ACTIVE</div>
+</div>
+<div class="absolute top-4 right-4 monospaced-ui text-right">
+<div class="text-2xl font-bold text-ghost-white tabular-nums tracking-widest bg-black/80 px-4 py-1">00:14:42:12</div>
+<div class="text-[10px] text-industrial-orange bg-black/80 px-2">FRAME_21,170</div>
 </div>
 </div>
-<div class="mt-auto h-64 bg-console-surface border-t-2 border-console-border p-4 space-y-4 opacity-30">
-<div class="h-4 w-48 bg-slate-800"></div>
-<div class="space-y-2">
-<div class="h-12 w-full bg-slate-800/50 brutalist-border"></div>
-<div class="h-10 w-full bg-slate-800/30 brutalist-border"></div>
-<div class="h-10 w-full bg-slate-800/30 brutalist-border"></div>
+<div class="h-64 bg-console-surface brutalist-border flex flex-col monospaced-ui">
+<div class="flex items-center justify-between px-4 py-2 border-b border-console-border bg-slate-900/50">
+<div class="flex gap-4">
+<button class="text-industrial-orange flex items-center gap-1 text-[10px] font-bold"><span class="material-symbols-outlined text-xs">add_circle</span> ADD_MARKER (M)</button>
+<button class="text-slate-400 flex items-center gap-1 text-[10px] hover:text-ghost-white"><span class="material-symbols-outlined text-xs">filter_list</span> FILTER_BY_USER</button>
+</div>
+<div class="flex gap-4 items-center">
+<span class="text-[10px] text-slate-500">ZOOM: 100%</span>
+<div class="w-32 h-1 bg-slate-800">
+<div class="w-1/2 h-full bg-industrial-orange"></div>
+</div>
+</div>
+</div>
+<div class="flex-1 relative overflow-hidden bg-[#0d121b]">
+<div class="absolute inset-0 grid grid-cols-12 opacity-5 pointer-events-none">
+<div class="border-r border-slate-400"></div><div class="border-r border-slate-400"></div><div class="border-r border-slate-400"></div><div class="border-r border-slate-400"></div><div class="border-r border-slate-400"></div><div class="border-r border-slate-400"></div><div class="border-r border-slate-400"></div><div class="border-r border-slate-400"></div><div class="border-r border-slate-400"></div><div class="border-r border-slate-400"></div><div class="border-r border-slate-400"></div>
+</div>
+<div class="p-2 space-y-1 relative h-full">
+<div class="h-10 border border-slate-800 relative flex items-center px-2 bg-slate-900/20">
+<span class="text-[9px] text-slate-600 font-bold absolute left-2 top-1">V1</span>
+<div class="marker-tick left-[15%] h-6 top-2"></div>
+<div class="marker-tick left-[28%] h-6 top-2"></div>
+<div class="marker-tick left-[45%] h-6 top-2"></div>
+<div class="marker-tick left-[62%] h-6 top-2"></div>
+<div class="marker-tick left-[80%] h-6 top-2"></div>
+</div>
+<div class="h-8 border border-slate-800 relative flex items-center bg-slate-900/10">
+<span class="text-[9px] text-slate-600 font-bold absolute left-2">A1</span>
+</div>
+<div class="h-8 border border-slate-800 relative flex items-center bg-slate-900/10">
+<span class="text-[9px] text-slate-600 font-bold absolute left-2">A2</span>
+</div>
+</div>
+<div class="absolute top-0 bottom-0 left-[45%] w-[2px] bg-industrial-orange z-10 shadow-[0_0_10px_rgba(255,107,0,1)]">
+<div class="absolute top-0 left-[-6px] w-0 h-0 border-l-[6px] border-l-transparent border-r-[6px] border-r-transparent border-t-[8px] border-t-industrial-orange"></div>
+</div>
+</div>
+<div class="bg-slate-900 border-t border-console-border p-3 flex items-center justify-between">
+<div class="flex items-center gap-6">
+<div class="flex items-center gap-3">
+<button class="material-symbols-outlined text-slate-500 hover:text-industrial-orange transition-colors">skip_previous</button>
+<button class="material-symbols-outlined text-slate-500 hover:text-industrial-orange transition-colors">fast_rewind</button>
+<button class="material-symbols-outlined text-industrial-orange text-3xl hover:scale-105 transition-transform">pause_circle</button>
+<button class="material-symbols-outlined text-slate-500 hover:text-industrial-orange transition-colors">fast_forward</button>
+<button class="material-symbols-outlined text-slate-500 hover:text-industrial-orange transition-colors">skip_next</button>
+</div>
+</div>
+<div class="flex items-center gap-4 text-[10px] text-slate-500">
+<span class="text-industrial-orange">AUDIO_STREAM_01_L/R</span>
+<div class="flex gap-0.5">
+<div class="w-1 h-3 bg-industrial-orange"></div>
+<div class="w-1 h-4 bg-industrial-orange"></div>
+<div class="w-1 h-2 bg-industrial-orange"></div>
+<div class="w-1 h-5 bg-slate-800"></div>
+</div>
+</div>
 </div>
 </div>
 </section>
-<aside class="w-96 brutalist-border bg-console-surface flex flex-col overflow-hidden relative">
-<div class="scanner-beam"></div>
-<div class="p-4 border-b border-console-border flex justify-between items-center bg-slate-900 shrink-0">
-<h3 class="text-sm font-bold tracking-widest text-primary font-jetbrains uppercase">FEEDBACK_LOG.FETCH</h3>
-<span class="text-[10px] text-neon-cyan font-mono">STATUS: SYNCING</span>
+<aside class="w-96 brutalist-border bg-console-surface flex flex-col overflow-hidden">
+<div class="p-4 border-b border-console-border flex justify-between items-center bg-slate-900 monospaced-ui">
+<h3 class="text-sm font-bold tracking-widest text-industrial-orange">FEEDBACK_LOG.DB</h3>
+<span class="text-[10px] text-slate-400">ITEMS: 05_LOGGED</span>
 </div>
-<div class="flex-1 overflow-hidden p-4 space-y-6 relative bg-[#0d121b]">
-<div class="p-4 border border-slate-700/50 space-y-3 relative">
-<div class="flex justify-between">
-<div class="h-3 w-20 bg-slate-700/40"></div>
-<div class="h-3 w-12 bg-slate-700/40"></div>
+<div class="flex-1 overflow-y-auto custom-scrollbar p-2 space-y-2 bg-[#0a0e14]">
+<div class="brutalist-border bg-slate-900/40 p-3 flex flex-col gap-2 group hover:border-industrial-orange transition-colors">
+<div class="flex justify-between items-start">
+<div class="flex items-center gap-2">
+<input checked="" class="w-3 h-3 bg-black border-slate-700 text-industrial-orange focus:ring-0 focus:ring-offset-0" type="checkbox"/>
+<span class="monospaced-ui text-[10px] text-industrial-orange font-bold">00:02:12:04</span>
 </div>
-<div class="punch-card-skeleton"></div>
-<div class="punch-card-skeleton w-4/5"></div>
+<span class="material-symbols-outlined text-green-500 text-sm">cloud_done</span>
 </div>
-<div class="p-4 border border-slate-700/50 space-y-3 relative">
-<div class="flex justify-between">
-<div class="h-3 w-24 bg-slate-700/40"></div>
-<div class="h-3 w-16 bg-slate-700/40"></div>
-</div>
-<div class="punch-card-skeleton"></div>
-<div class="punch-card-skeleton w-2/3"></div>
-</div>
-<div class="p-4 border border-slate-700/50 space-y-3 relative">
-<div class="flex justify-between">
-<div class="h-3 w-16 bg-slate-700/40"></div>
-<div class="h-3 w-20 bg-slate-700/40"></div>
-</div>
-<div class="punch-card-skeleton"></div>
-<div class="punch-card-skeleton w-full"></div>
-</div>
-<div class="p-4 border border-slate-700/50 space-y-3 relative">
-<div class="flex justify-between">
-<div class="h-3 w-28 bg-slate-700/40"></div>
-<div class="h-3 w-12 bg-slate-700/40"></div>
-</div>
-<div class="punch-card-skeleton"></div>
-<div class="punch-card-skeleton w-3/4"></div>
+<p class="text-xs font-ibm text-ghost-white leading-relaxed">Color temperature deviation in background elements. Requires shift toward 5600K.</p>
+<div class="flex justify-between items-center mt-2 border-t border-slate-800 pt-2">
+<span class="text-[9px] monospaced-ui text-slate-500">SYNC_SUCCESS</span>
+<span class="text-[9px] monospaced-ui text-slate-500">ID:PB_001</span>
 </div>
 </div>
-<div class="p-4 bg-black border-t-2 border-primary/50 h-48 font-mono text-[10px] overflow-hidden flex flex-col justify-end gap-1">
-<div class="text-slate-600">CONNECTING TO DATABASE_CLUSTER_ALPHA...</div>
-<div class="text-slate-600">AUTH_TOKEN_VALIDATED: AES-256-GCM</div>
-<div class="text-neon-cyan">FETCHING ENTRIES FOR SLUG: REVIEW_SLUG_04... 200 OK</div>
-<div class="text-slate-400">RECEIVING BYTES: [####################] 100%</div>
-<div class="text-slate-400">PARSING_JSON_SCHEMA_V3...</div>
-<div class="text-neon-amber animate-pulse">RECONSTRUCTING_DOM_STATE...</div>
-<div class="mt-2 flex items-center gap-2">
-<span class="bg-primary text-white px-1">SYSTEM</span>
-<span class="text-primary">_ INITIALIZING CURSOR</span>
+<div class="brutalist-border bg-slate-900/40 p-3 flex flex-col gap-2 group hover:border-industrial-orange transition-colors">
+<div class="flex justify-between items-start">
+<div class="flex items-center gap-2">
+<input class="w-3 h-3 bg-black border-slate-700 text-industrial-orange focus:ring-0 focus:ring-offset-0" type="checkbox"/>
+<span class="monospaced-ui text-[10px] text-industrial-orange font-bold">00:04:33:18</span>
+</div>
+<span class="material-symbols-outlined text-green-500 text-sm">cloud_done</span>
+</div>
+<p class="text-xs font-ibm text-ghost-white leading-relaxed">Flicker detected on LED panel right side. Check frame sync on secondary camera.</p>
+<div class="flex justify-between items-center mt-2 border-t border-slate-800 pt-2">
+<span class="text-[9px] monospaced-ui text-slate-500">SYNC_SUCCESS</span>
+<span class="text-[9px] monospaced-ui text-slate-500">ID:PB_002</span>
 </div>
 </div>
-<div class="p-4 bg-slate-900 border-t border-console-border grid grid-cols-2 gap-2 text-[9px] font-jetbrains shrink-0">
+<div class="brutalist-border border-industrial-orange bg-slate-800 p-3 flex flex-col gap-2">
+<div class="flex justify-between items-start">
+<div class="flex items-center gap-2">
+<input checked="" class="w-3 h-3 bg-black border-slate-700 text-industrial-orange focus:ring-0 focus:ring-offset-0" type="checkbox"/>
+<span class="monospaced-ui text-[10px] text-industrial-orange font-bold">00:08:14:00</span>
+</div>
+<span class="material-symbols-outlined text-green-500 text-sm">cloud_done</span>
+</div>
+<p class="text-xs font-ibm text-ghost-white leading-relaxed">Focus breathing visible during transition. Re-evaluate lens metadata pull.</p>
+<div class="flex justify-between items-center mt-2 border-t border-slate-700 pt-2">
+<span class="text-[9px] monospaced-ui text-slate-500">SYNC_SUCCESS</span>
+<span class="text-[9px] monospaced-ui text-slate-500">ID:PB_003</span>
+</div>
+</div>
+<div class="brutalist-border bg-slate-900/40 p-3 flex flex-col gap-2 group hover:border-industrial-orange transition-colors">
+<div class="flex justify-between items-start">
+<div class="flex items-center gap-2">
+<input class="w-3 h-3 bg-black border-slate-700 text-industrial-orange focus:ring-0 focus:ring-offset-0" type="checkbox"/>
+<span class="monospaced-ui text-[10px] text-industrial-orange font-bold">00:11:05:22</span>
+</div>
+<span class="material-symbols-outlined text-green-500 text-sm">cloud_done</span>
+</div>
+<p class="text-xs font-ibm text-ghost-white leading-relaxed">Asset mismatch on foreground prop. Texture resolution appears lower than master set.</p>
+<div class="flex justify-between items-center mt-2 border-t border-slate-800 pt-2">
+<span class="text-[9px] monospaced-ui text-slate-500">SYNC_SUCCESS</span>
+<span class="text-[9px] monospaced-ui text-slate-500">ID:PB_004</span>
+</div>
+</div>
+<div class="brutalist-border bg-slate-900/40 p-3 flex flex-col gap-2 group hover:border-industrial-orange transition-colors">
+<div class="flex justify-between items-start">
+<div class="flex items-center gap-2">
+<input class="w-3 h-3 bg-black border-slate-700 text-industrial-orange focus:ring-0 focus:ring-offset-0" type="checkbox"/>
+<span class="monospaced-ui text-[10px] text-industrial-orange font-bold">00:14:42:12</span>
+</div>
+<span class="material-symbols-outlined text-green-500 text-sm">cloud_done</span>
+</div>
+<p class="text-xs font-ibm text-ghost-white leading-relaxed">Shadow clipping on character silhouette. Adjust fill light levels in post-processing.</p>
+<div class="flex justify-between items-center mt-2 border-t border-slate-800 pt-2">
+<span class="text-[9px] monospaced-ui text-slate-500">SYNC_SUCCESS</span>
+<span class="text-[9px] monospaced-ui text-slate-500">ID:PB_005</span>
+</div>
+</div>
+</div>
+<div class="p-4 bg-slate-900 border-t border-console-border grid grid-cols-2 gap-2 text-[9px] monospaced-ui">
 <div class="flex flex-col">
-<span class="text-slate-500 uppercase">Latency</span>
-<span class="text-neon-cyan">14ms</span>
+<span class="text-slate-600">SYSTEM_UPTIME</span>
+<span class="text-ghost-white">04:22:15</span>
 </div>
 <div class="flex flex-col">
-<span class="text-slate-500 uppercase">Region</span>
-<span class="text-slate-300">US-EAST-1</span>
+<span class="text-slate-600">BUFFER_STATUS</span>
+<span class="text-industrial-orange">ACTIVE / 94%</span>
+</div>
+<div class="flex flex-col">
+<span class="text-slate-600">DB_CONNECTION</span>
+<span class="text-neon-cyan">LIVE_POCKETBASE_SYNC</span>
+</div>
+<div class="flex flex-col">
+<span class="text-slate-600">SESSION_ID</span>
+<span class="text-ghost-white">#PRIME_42</span>
 </div>
 </div>
 </aside>
