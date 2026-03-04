@@ -1,5 +1,5 @@
-**Name:** NOIR  
-**Palette:** Obsidian (#0A0A0A), Industrial Gray (#1F1F1F), Hazard Yellow (#FFC107)  
-**Typography:** Inter (Interface) & JetBrains Mono (Timecodes)
+**Name:** CORE
+**Palette:** Obsidian Slate, Industrial Orange, Ghost White
+**Typography:** Inter (Interface), IBM Plex Mono (Log Data)
 
-1
+5

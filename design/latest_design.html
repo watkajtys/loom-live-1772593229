@@ -1,11 +1,10 @@
 <!DOCTYPE html>
-
 <html class="dark" lang="en"><head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Solarized High-Density Review</title>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300;400;500;700&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 <script id="tailwind-config">
         tailwind.config = {
@@ -13,246 +12,251 @@
             theme: {
                 extend: {
                     colors: {
-                        "primary": "#135bec",
-                        "background-light": "#f6f6f8",
-                        "background-dark": "#101622",
+                        "base03": "#002b36", // Deep Navy
+                        "base02": "#073642", // Grayish Navy
+                        "base01": "#586e75",
+                        "base00": "#657b83",
+                        "base0": "#839496",
+                        "silver": "#C0C0C0",
+                        "cyan": "#2aa198",
+                        "magenta": "#d33682",
+                        "violet": "#6c71c4",
+                        "blue": "#268bd2",
+                        "red": "#dc322f",
                     },
                     fontFamily: {
-                        "display": ["Inter"]
+                        "mono": ["Roboto Mono", "monospace"]
                     },
-                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
                 },
             },
         }
     </script>
-<style>
-        body { font-family: 'Inter', sans-serif; }
-        .frosted-glass {
-            background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
+<style type="text/tailwindcss">
+        @layer base {
+            body {
+                @apply bg-base03 text-silver font-mono;
+            }
         }
-        .celluloid-track {
-            background-image: linear-gradient(90deg, transparent 95%, rgba(255,255,255,0.05) 95%);
-            background-size: 40px 100%;
+        .solarized-border {
+            border: 1px solid #073642;
         }
-        .z-layer {
-            transition: transform 0.2s ease;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+        .scanline {
+            background: linear-gradient(to bottom, rgba(42,161,152,0) 50%, rgba(42,161,152,0.05) 50%);
+            background-size: 100% 4px;
         }
-        .z-layer:hover {
-            transform: translateZ(10px) translateY(-2px);
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
+        .monospaced-ui {
+            font-family: 'Roboto Mono', monospace;
+            letter-spacing: -0.02em;
         }
     </style>
 </head>
-<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 overflow-hidden h-screen font-display">
-<div class="flex flex-col h-full">
-<!-- Top Navigation Bar -->
-<header class="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 px-6 py-3 bg-white/5 backdrop-blur-md z-50">
+<body class="selection:bg-cyan/30">
+<div class="flex flex-col h-screen w-full overflow-hidden">
+<header class="flex h-12 items-center justify-between solarized-border bg-base02 px-4 monospaced-ui">
 <div class="flex items-center gap-6">
+<div class="flex items-center gap-2 text-cyan">
+<span class="material-symbols-outlined text-xl">precision_manufacturing</span>
+<span class="font-bold text-sm tracking-tight">SOLARIZED_REVIEW v4.0</span>
+</div>
+<nav class="hidden md:flex items-center gap-6 text-[10px] text-base01">
+<a class="hover:text-cyan transition-colors" href="#">SESSION_MGR</a>
+<span class="text-base03">/</span>
+<a class="text-silver border-b border-cyan" href="#">REVIEW_PRJ_449</a>
+<span class="text-base03">/</span>
+<a class="hover:text-cyan transition-colors" href="#">METADATA</a>
+</nav>
+</div>
 <div class="flex items-center gap-3">
-<div class="size-8 bg-primary rounded-lg flex items-center justify-center text-white">
-<span class="material-symbols-outlined">movie_filter</span>
+<div class="flex items-center gap-2 bg-base03 px-2 py-0.5 solarized-border">
+<div class="w-1.5 h-1.5 rounded-full bg-red animate-pulse"></div>
+<span class="text-[9px] text-red uppercase">Live_Sync</span>
 </div>
-<div class="flex flex-col">
-<h2 class="text-sm font-bold leading-tight tracking-tight">ReviewSpace</h2>
-<span class="text-[10px] text-slate-500 uppercase tracking-widest font-semibold">Pro Studio</span>
-</div>
-</div>
-<div class="h-8 w-px bg-slate-800 mx-2"></div>
-<div class="flex flex-col">
-<h1 class="text-sm font-medium">Project Alpha / Commercial_v4_Final</h1>
-<p class="text-[11px] text-slate-400">Updated 2 hours ago by Sarah K.</p>
-</div>
-</div>
-<div class="flex items-center gap-4">
-<div class="flex items-center gap-1 bg-slate-800/50 p-1 rounded-lg border border-slate-700">
-<button class="px-3 py-1.5 text-xs font-medium rounded-md bg-slate-700 text-white">Edit</button>
-<button class="px-3 py-1.5 text-xs font-medium rounded-md text-slate-400 hover:text-white">Review</button>
-</div>
-<div class="flex gap-2">
-<button class="flex items-center gap-2 px-4 py-2 bg-slate-800 hover:bg-slate-700 text-white text-xs font-bold rounded-lg transition-colors">
-<span class="material-symbols-outlined text-sm">ios_share</span>
-                        Share
-                    </button>
-<button class="flex items-center gap-2 px-4 py-2 bg-primary hover:bg-primary/80 text-white text-xs font-bold rounded-lg transition-colors">
-<span class="material-symbols-outlined text-sm">cloud_upload</span>
-                        New Version
-                    </button>
-</div>
-<div class="flex -space-x-2 ml-4">
-<div class="size-8 rounded-full border-2 border-background-dark bg-slate-700 flex items-center justify-center text-[10px] font-bold" title="Sarah">S</div>
-<div class="size-8 rounded-full border-2 border-background-dark bg-primary flex items-center justify-center text-[10px] font-bold" title="You">JD</div>
-<div class="size-8 rounded-full border-2 border-background-dark bg-slate-600 flex items-center justify-center text-[10px] font-bold">+2</div>
+<div class="flex gap-1">
+<button class="solarized-border bg-base03 p-1 hover:text-cyan transition-all">
+<span class="material-symbols-outlined text-base">tune</span>
+</button>
+<button class="solarized-border bg-cyan px-3 py-1 text-[10px] text-base03 font-bold hover:bg-silver transition-colors">
+                    SHARE_ACCESS
+                </button>
 </div>
 </div>
 </header>
 <main class="flex flex-1 overflow-hidden">
-<!-- Left Side: Media Canvas -->
-<section class="flex-1 flex flex-col relative bg-black/20">
-<div class="flex-1 p-8 flex items-center justify-center relative">
-<!-- Video Player Canvas -->
-<div class="w-full max-w-5xl aspect-video frosted-glass rounded-xl overflow-hidden shadow-2xl relative group">
-<div class="absolute inset-0 flex items-center justify-center bg-slate-900">
-<img alt="Cinematic landscape video frame" class="w-full h-full object-cover opacity-80" data-alt="Cinematic landscape shot of a misty forest at dawn" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBm41EcxJOdDW9Y_Ehfav0mck-BLN8vcIVMXMXKbZwHKyLUAFdJ7PQquGgREt0yEJF3CdNPefmQIx3y0M6CsYTYnsL27uejsHUyWqe_qFB2gXNpRdFjnyRf56DVLOxqAvfqK0Ym3tweiTAJ3qgos8qwmLyh7JxBJt11mobsb5jRvNnPESubsewPVRvlVs3d_udEcNa279zZdN2sY3UdoXEE8dcdRwQwbfgSsXwEY6aItzEyEAOL6fTFR4fCoXMSe2N-sEBDTPVrOyo"/>
-<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-<!-- Central Play Button -->
-<button class="size-20 rounded-full bg-primary/90 text-white flex items-center justify-center shadow-xl hover:scale-105 transition-transform">
+<section class="flex-1 flex flex-col solarized-border overflow-hidden">
+<div class="relative flex-1 bg-black flex items-center justify-center group">
+<div class="absolute inset-0 scanline opacity-30 pointer-events-none"></div>
+<div class="w-full h-full bg-center bg-no-repeat bg-contain" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCOERSdz_Ls3q2QB__wVyu7vzmNCDvDzxstbcw14wWZ3rzcuR-HvApfvgGq3N4G-ngg-YeF-1fUl_BxJmkaUi0ylyhte1Y6mmwPc1dSDXaTb0BfW8rvwrILKPC2z_MR2xQKluxQE5Fqzz01EZf46JinnrGiSSqxexsKR4cZa0FUIc0BxNJfHI6PWLvUKyL67N6umhKRcozSHpqJ109d5XLJx8p0kMuK1a3qX2EV87-FlWY8P5oc85I8jxv6_1Rqlu7IyHWiW2fHA2A');">
+</div>
+<div class="absolute top-4 left-4 flex flex-col gap-1 monospaced-ui text-[10px]">
+<div class="bg-base03/80 px-2 py-0.5 border-l border-cyan text-cyan">SRC: CAM_A_004.RAW</div>
+<div class="bg-base03/80 px-2 py-0.5 border-l border-magenta text-magenta">COLOR: REC.709_D65</div>
+</div>
+<div class="absolute top-4 right-4 monospaced-ui text-right">
+<div class="text-xl font-bold text-silver tabular-nums bg-base03/80 px-3 py-1 border border-base02">00:12:45:12</div>
+<div class="text-[9px] text-base01 mt-1 uppercase">Frame_018348</div>
+</div>
+<div class="opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-6 bg-base03/40 border border-cyan text-cyan backdrop-blur-sm">
 <span class="material-symbols-outlined text-4xl">play_arrow</span>
 </button>
 </div>
-<!-- Overlay HUD -->
-<div class="absolute top-4 left-4 flex gap-2">
-<span class="px-2 py-1 rounded bg-black/60 backdrop-blur-md text-[10px] font-mono text-white border border-white/10">4K â¢ 23.976 fps</span>
-<span class="px-2 py-1 rounded bg-primary/60 backdrop-blur-md text-[10px] font-mono text-white border border-white/10">REC 709</span>
+</div>
+<div class="h-60 bg-base03 flex flex-col monospaced-ui border-t solarized-border">
+<div class="flex items-center justify-between px-4 py-1.5 border-b solarized-border bg-base02/50">
+<div class="flex gap-4">
+<button class="text-cyan flex items-center gap-1 text-[10px] hover:text-silver transition-colors">
+<span class="material-symbols-outlined text-xs">add_box</span> MARKER (M)
+                        </button>
+<button class="text-base01 flex items-center gap-1 text-[10px] hover:text-silver">
+<span class="material-symbols-outlined text-xs">content_cut</span> TRIM_MODE
+                        </button>
+</div>
+<div class="flex gap-3 items-center">
+<span class="text-[9px] text-base01">ZOOM_LEVEL: 1:1</span>
+<div class="w-24 h-1 bg-base02"><div class="w-2/3 h-full bg-cyan"></div></div>
+</div>
+</div>
+<div class="flex-1 relative overflow-hidden">
+<div class="absolute inset-0 grid grid-cols-12 opacity-5 pointer-events-none">
+<div class="border-r border-silver"></div>
+<div class="border-r border-silver"></div>
+<div class="border-r border-silver"></div>
+<div class="border-r border-silver"></div>
+<div class="border-r border-silver"></div>
+<div class="border-r border-silver"></div>
+<div class="border-r border-silver"></div>
+<div class="border-r border-silver"></div>
+<div class="border-r border-silver"></div>
+<div class="border-r border-silver"></div>
+<div class="border-r border-silver"></div>
+</div>
+<div class="p-2 space-y-1">
+<div class="h-10 border border-base02 bg-base02/20 relative flex items-center">
+<span class="text-[8px] text-base01 absolute left-1 top-1">V1</span>
+<div class="h-full w-1/3 bg-cyan/20 border-x border-cyan/40 mx-8 flex items-center px-2">
+<span class="text-[9px] text-cyan truncate">SCENE_04A_L01</span>
+</div>
+<div class="h-full w-1/2 bg-cyan/10 border-x border-cyan/30 flex items-center px-2 relative">
+<span class="text-[9px] text-cyan/70 truncate">SCENE_04B_COMP</span>
+<div class="absolute left-1/4 top-0 bottom-0 w-[1px] bg-magenta shadow-[0_0_5px_#d33682]">
+<div class="absolute top-0 left-[-3px] w-1.5 h-1.5 bg-magenta"></div>
 </div>
 </div>
 </div>
-<!-- Bottom: Celluloid Timeline -->
-<div class="h-32 bg-slate-900/80 backdrop-blur-xl border-t border-slate-800 px-6 py-4 flex flex-col gap-4">
-<div class="flex items-center justify-between text-[11px] font-mono text-slate-400">
+<div class="h-8 border border-base02 bg-base02/10 relative flex items-center">
+<span class="text-[8px] text-base01 absolute left-1 top-1">A1</span>
+<div class="w-full h-full px-12 flex items-center">
+<div class="w-full h-2 bg-blue/10 border-y border-blue/20"></div>
+</div>
+</div>
+<div class="h-8 border border-base02 bg-base02/10 relative flex items-center">
+<span class="text-[8px] text-base01 absolute left-1 top-1">A2</span>
+<div class="w-full h-full px-12 flex items-center">
+<div class="w-3/4 h-2 bg-blue/10 border-y border-blue/20"></div>
+</div>
+</div>
+</div>
+<div class="absolute top-0 bottom-0 left-[42%] w-[1px] bg-red z-10">
+<div class="absolute top-0 left-[-4px] w-2 h-2 bg-red rotate-45"></div>
+</div>
+</div>
+<div class="bg-base02 border-t solarized-border p-2 flex items-center justify-between">
 <div class="flex items-center gap-4">
-<button class="hover:text-white transition-colors"><span class="material-symbols-outlined text-lg">skip_previous</span></button>
-<button class="hover:text-white transition-colors"><span class="material-symbols-outlined text-lg">play_circle</span></button>
-<button class="hover:text-white transition-colors"><span class="material-symbols-outlined text-lg">skip_next</span></button>
-<span class="text-primary font-bold ml-2">00:01:22:14</span>
-<span class="opacity-40">/</span>
-<span>00:03:45:00</span>
+<div class="flex items-center gap-2">
+<button class="material-symbols-outlined text-base01 hover:text-cyan text-lg">skip_previous</button>
+<button class="material-symbols-outlined text-silver hover:text-cyan text-2xl">play_arrow</button>
+<button class="material-symbols-outlined text-base01 hover:text-cyan text-lg">skip_next</button>
 </div>
-<div class="flex items-center gap-4">
-<span class="material-symbols-outlined text-sm">volume_up</span>
-<span class="material-symbols-outlined text-sm">settings</span>
-<span class="material-symbols-outlined text-sm">fullscreen</span>
+<div class="h-4 w-[1px] bg-base01/30"></div>
+<span class="text-[9px] text-cyan font-bold tabular-nums">00:12:45:12 / 00:34:00:00</span>
 </div>
+<div class="flex items-center gap-4 text-[9px] text-base01 uppercase">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-xs">volume_up</span>
+<div class="w-16 h-1 bg-base03"><div class="w-3/4 h-full bg-cyan"></div></div>
 </div>
-<div class="relative h-12 celluloid-track rounded-md border border-slate-800/50 flex items-center overflow-hidden">
-<!-- Draggable Playhead Area -->
-<div class="absolute inset-0 flex items-center">
-<!-- Timeline Markers -->
-<div class="absolute left-[15%] size-3 bg-yellow-400 rounded-full border-2 border-slate-900 z-10" title="Comment at 00:12"></div>
-<div class="absolute left-[35%] size-3 bg-primary rounded-full border-2 border-slate-900 z-10" title="Resolved marker"></div>
-<div class="absolute left-[45%] size-3 bg-red-400 rounded-full border-2 border-slate-900 z-10 shadow-[0_0_8px_rgba(248,113,113,0.6)]" title="Urgent: Fix color at 01:22"></div>
-<div class="absolute left-[70%] size-3 bg-slate-500 rounded-full border-2 border-slate-900 z-10"></div>
-<!-- Active Progress -->
-<div class="absolute left-0 top-0 bottom-0 bg-primary/10 border-r-2 border-primary w-[45%] z-20">
-<div class="absolute right-[-1px] top-[-8px] bottom-[-8px] w-0.5 bg-primary shadow-[0_0_10px_#135bec]">
-<div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-full w-2 h-2 rotate-45 bg-primary"></div>
-</div>
-</div>
-<!-- Film Strip Visuals -->
-<div class="flex gap-1 opacity-20 pointer-events-none">
-<div class="w-20 h-8 bg-slate-700 rounded-sm"></div>
-<div class="w-20 h-8 bg-slate-700 rounded-sm"></div>
-<div class="w-20 h-8 bg-slate-700 rounded-sm"></div>
-<div class="w-20 h-8 bg-slate-700 rounded-sm"></div>
-<div class="w-20 h-8 bg-slate-700 rounded-sm"></div>
-<div class="w-20 h-8 bg-slate-700 rounded-sm"></div>
-<div class="w-20 h-8 bg-slate-700 rounded-sm"></div>
-</div>
+<span class="border-l border-base01/30 pl-4">48kHz_PCM</span>
 </div>
 </div>
 </div>
 </section>
-<!-- Right Side: Feedback Drawer -->
-<aside class="w-[400px] border-l border-slate-800 bg-background-dark/50 backdrop-blur-md flex flex-col">
-<div class="p-6 border-b border-slate-800 flex items-center justify-between">
-<h3 class="text-sm font-bold uppercase tracking-widest text-slate-400">Feedback</h3>
+<aside class="w-80 solarized-border bg-base03 flex flex-col monospaced-ui overflow-hidden">
+<div class="p-3 border-b solarized-border flex justify-between items-center bg-base02">
+<h3 class="text-[10px] font-bold tracking-widest text-cyan uppercase">Log.Entries</h3>
+<span class="text-[9px] text-base01">COUNT: 04</span>
+</div>
+<div class="p-3 bg-base02/30 border-b solarized-border">
+<div class="flex flex-col gap-2">
+<div class="flex justify-between text-[9px]">
+<span class="text-cyan">00:12:45:12</span>
+<span class="text-base01">@USER_01</span>
+</div>
+<textarea class="bg-base03 solarized-border border-base02 w-full text-[10px] p-2 focus:border-cyan focus:ring-0 placeholder:text-base01 text-silver" placeholder="COMMIT_FEEDBACK..." rows="2"></textarea>
+<div class="flex justify-end">
+<button class="px-3 py-1 bg-cyan text-base03 text-[9px] font-bold hover:bg-silver transition-colors">SUBMIT_LOG</button>
+</div>
+</div>
+</div>
+<div class="flex-1 overflow-y-auto scrollbar-hide p-2 space-y-2">
+<div class="solarized-border bg-base02/20 p-2.5 border-l-2 border-l-magenta">
+<div class="flex justify-between items-start mb-1">
 <div class="flex items-center gap-2">
-<span class="text-xs text-slate-500">Sorted by time</span>
-<span class="material-symbols-outlined text-sm text-slate-500">filter_list</span>
+<input class="w-3 h-3 bg-base03 border-base01 text-cyan focus:ring-0 rounded-none" type="checkbox"/>
+<span class="text-[10px] font-bold text-magenta">00:08:12:04</span>
 </div>
+<span class="text-[8px] text-base01">@PRODUCER</span>
 </div>
-<div class="flex-1 overflow-y-auto p-4 space-y-6 custom-scrollbar">
-<!-- Comment Layer 1 -->
-<div class="z-layer bg-slate-800/40 rounded-xl p-4 border border-slate-700/50 relative overflow-hidden">
-<div class="flex justify-between items-start mb-3">
-<div class="flex items-center gap-3">
-<div class="size-8 rounded-full bg-orange-500 flex items-center justify-center text-xs font-bold">MK</div>
-<div>
-<p class="text-xs font-bold">Marcus Kane</p>
-<p class="text-[10px] text-slate-500">00:12:05</p>
+<p class="text-[10px] text-silver leading-normal lowercase">Black point in the shadow area feels too crushed. Lift slightly for more detail.</p>
 </div>
-</div>
+<div class="solarized-border bg-base02/20 p-2.5 border-l-2 border-l-violet">
+<div class="flex justify-between items-start mb-1">
 <div class="flex items-center gap-2">
-<input class="rounded border-slate-700 bg-transparent text-primary focus:ring-primary size-4" type="checkbox"/>
+<input class="w-3 h-3 bg-base03 border-base01 text-cyan focus:ring-0 rounded-none" type="checkbox"/>
+<span class="text-[10px] font-bold text-violet">00:15:30:00</span>
 </div>
+<span class="text-[8px] text-base01">@VFX_SUP</span>
 </div>
-<p class="text-sm text-slate-300 leading-relaxed mb-4">
-                            The exposure here feels a bit too high. Can we pull back the highlights on the actor's face?
-                        </p>
-<div class="flex items-center justify-between pt-3 border-t border-slate-700/50">
-<button class="text-[10px] font-bold text-primary hover:underline">REPLY</button>
-<span class="px-2 py-0.5 rounded-full bg-yellow-500/10 text-yellow-500 text-[10px] font-bold border border-yellow-500/20">LIGHTING</span>
+<p class="text-[10px] text-silver leading-normal lowercase">Noise grain on the plate doesn't match the cg element. Match 4K noise profile.</p>
 </div>
-</div>
-<!-- Comment Layer 2 (Active/Selected) -->
-<div class="z-layer bg-primary/10 rounded-xl p-4 border border-primary/40 shadow-[0_0_15px_rgba(19,91,236,0.15)] ring-1 ring-primary/30">
-<div class="flex justify-between items-start mb-3">
-<div class="flex items-center gap-3">
-<div class="size-8 rounded-full bg-blue-500 flex items-center justify-center text-xs font-bold">SL</div>
-<div>
-<p class="text-xs font-bold">Sarah L.</p>
-<p class="text-[10px] text-primary font-bold">01:22:14</p>
-</div>
-</div>
+<div class="solarized-border bg-base02/20 p-2.5 border-l-2 border-l-cyan">
+<div class="flex justify-between items-start mb-1">
 <div class="flex items-center gap-2">
-<span class="material-symbols-outlined text-sm text-primary">priority_high</span>
-<input class="rounded border-slate-700 bg-transparent text-primary focus:ring-primary size-4" type="checkbox"/>
+<input class="w-3 h-3 bg-base03 border-base01 text-cyan focus:ring-0 rounded-none" type="checkbox"/>
+<span class="text-[10px] font-bold text-cyan">00:22:11:05</span>
 </div>
+<span class="text-[8px] text-base01">@EDITOR</span>
 </div>
-<p class="text-sm text-slate-100 leading-relaxed mb-4">
-                            Critical: Frame 1974 has a visible boom mic in the upper left corner. Needs painting out.
-                        </p>
-<div class="flex flex-col gap-2 p-2 bg-black/20 rounded-lg mb-4">
-<img alt="Boom mic visual reference" class="w-full h-20 object-cover rounded border border-white/5" data-alt="Close up of a film set showing equipment details" src="https://lh3.googleusercontent.com/aida-public/AB6AXuANtGPs9pKSaIgvbT7zhkSioOSdlP18RL53K12QgXpCd4xowe-lHqxwHaDXE_u5q8B-mvTX0c2Y31FxndEelT-wdVHaYHbvxH8-Oy5vQPG0EI_-_BT30kFEJgRKEIOcriEe-tU_Amdb2WDn4NTQ6qDJPnT6loX8d8ew3JC8O4ySchutfyBg3N6Qujiv8ca8G_gDu-MzERwy33E_YGr5aUu2paBmmEGVZ2yTjPGKNNQ6ae31FrBEx7DLODGeW7TUj2GaNQFEagXBh7I"/>
+<p class="text-[10px] text-silver leading-normal lowercase">Check frame overlap on this transition. Possible duplicate frame at end of clip.</p>
 </div>
-<div class="flex items-center justify-between pt-3 border-t border-white/5">
-<button class="text-[10px] font-bold text-primary hover:underline">3 REPLIES</button>
-<span class="px-2 py-0.5 rounded-full bg-red-500/10 text-red-400 text-[10px] font-bold border border-red-500/20">BUG</span>
-</div>
-</div>
-<!-- Comment Layer 3 (Resolved) -->
-<div class="z-layer bg-slate-800/20 rounded-xl p-4 border border-slate-800 opacity-60">
-<div class="flex justify-between items-start mb-3">
-<div class="flex items-center gap-3">
-<div class="size-8 rounded-full bg-slate-600 flex items-center justify-center text-xs font-bold">JD</div>
-<div>
-<p class="text-xs font-bold text-slate-400">John Doe (You)</p>
-<p class="text-[10px] text-slate-500">02:45:00</p>
-</div>
-</div>
-<div class="flex items-center gap-1 text-emerald-500">
-<span class="material-symbols-outlined text-sm">check_circle</span>
-<span class="text-[10px] font-bold">RESOLVED</span>
-</div>
-</div>
-<p class="text-sm text-slate-500 italic line-through mb-4">
-                            Color grade on the final transition is slightly too green.
-                        </p>
-</div>
-</div>
-<!-- Feedback Input -->
-<div class="p-6 bg-slate-900 border-t border-slate-800">
-<div class="relative">
-<textarea class="w-full bg-slate-800 border-slate-700 rounded-xl text-sm focus:ring-primary focus:border-primary placeholder:text-slate-500 transition-all resize-none p-4" placeholder="Add a comment at 00:01:22..." rows="3"></textarea>
-<div class="absolute bottom-3 right-3 flex items-center gap-2">
-<button class="p-1.5 text-slate-400 hover:text-white transition-colors">
-<span class="material-symbols-outlined text-sm">attach_file</span>
-</button>
-<button class="size-8 bg-primary rounded-lg flex items-center justify-center text-white hover:bg-primary/80 transition-all">
-<span class="material-symbols-outlined text-sm">send</span>
-</button>
-</div>
-</div>
-<div class="mt-3 flex items-center justify-between">
+<div class="solarized-border bg-base02/10 p-2.5 border-l-2 border-l-base01 opacity-40">
+<div class="flex justify-between items-start mb-1">
 <div class="flex items-center gap-2">
-<span class="material-symbols-outlined text-slate-500 text-sm">alternate_email</span>
-<span class="material-symbols-outlined text-slate-500 text-sm">tag</span>
+<input checked="" class="w-3 h-3 bg-base03 border-base01 text-base01 focus:ring-0 rounded-none" type="checkbox"/>
+<span class="text-[10px] font-bold text-base01">00:01:05:00</span>
 </div>
-<p class="text-[10px] text-slate-500">Press Cmd + Enter to send</p>
+</div>
+<p class="text-[10px] text-base01 leading-normal line-through lowercase">Initial splash screen duration is too short.</p>
+</div>
+</div>
+<div class="p-3 bg-base02 solarized-border grid grid-cols-2 gap-y-2 text-[8px]">
+<div class="flex flex-col">
+<span class="text-base01">BUFFER_PIPE</span>
+<span class="text-cyan">CONNECTED_10G</span>
+</div>
+<div class="flex flex-col">
+<span class="text-base01">LATENCY</span>
+<span class="text-cyan">14MS</span>
+</div>
+<div class="flex flex-col col-span-2">
+<span class="text-base01">CLIENT_HNDL</span>
+<span class="text-silver">PRJ_X_SOLARIZED_DARK</span>
 </div>
 </div>
 </aside>
 </main>
 </div>
+
 </body></html>
