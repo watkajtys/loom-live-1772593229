@@ -1,3 +1,24 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer utilities {
+  .frosted-glass {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+  }
+  .celluloid-track {
+    background-image: linear-gradient(90deg, transparent 95%, rgba(255,255,255,0.05) 95%);
+    background-size: 40px 100%;
+  }
+  .z-layer {
+    transition: transform 0.2s ease;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+  }
+  .z-layer:hover {
+    transform: translateZ(10px) translateY(-2px);
+  }
+}
+
+body { font-family: 'Inter', sans-serif; }
